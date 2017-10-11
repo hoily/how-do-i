@@ -9,11 +9,13 @@ class App extends Component {
     }
   }
   componentDidMount(){
-    this.input.focus();
+    this.input.focus()
   }
 
-  handleKeyPress = e => {
+    handleKeyPress = e => {
+    const { showAnswer } = this.state;    
     if (e.key === 'Enter') {
+      if (!showAnswer && this.input.value.length === 0) return
       this.toggleShowAnswer()
     }
   }
@@ -21,6 +23,7 @@ class App extends Component {
   toggleShowAnswer = () => {
     const { showAnswer } = this.state;
     this.setState({showAnswer: !showAnswer})
+    if (showAnswer) this.back.focus()
   }
 
   render() {
@@ -30,14 +33,14 @@ class App extends Component {
         {!showAnswer &&
           <div>
             How do I&nbsp;
-            <input ref={(input) => {this.input = input;}} onKeyPress={this.handleKeyPress} type="text"></input>
+            <input ref={(input) => {this.input = input;}} type="text" onKeyDown={this.handleKeyPress}></input>
             ?
           </div>
         }
         {showAnswer && 
           <div>
             <p>Don't</p>
-            <input type="button" onClick={this.toggleShowAnswer} value="Back"/>
+            <input type="button" onClick={this.toggleShowAnswer} ref={(back) => {this.back = back;}} value="Back"/>
           </div>
         }
       </div>
