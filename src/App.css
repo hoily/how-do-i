@@ -18,5 +18,9 @@
 }
 .App input[type="button"]{
   color: white;
-  background: transparent;
+  background: rgba(0,0,0,0.31);
+  border: none;
+  font-size: 22px;
+  padding: 10px 22px;
+  border-radius: 4px;
 }
