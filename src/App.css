@@ -1,0 +1,22 @@
+.App {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 80pt;
+}
+.App input[type="text"]{ 
+  padding: 20px 10px; 
+  font-size: 80pt; 
+  width: 50vw; 
+  color: white;
+  background: transparent;
+  outline:none;
+  border: none;
+  border-bottom: solid;
+}
+.App input[type="button"]{
+  color: white;
+  background: transparent;
+}
