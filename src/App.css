@@ -16,7 +16,7 @@
   border: none;
   border-bottom: solid;
 }
-.App input[type="button"]{
+.App input[type="submit"]{
   color: white;
   background: rgba(0,0,0,0.31);
   border: none;

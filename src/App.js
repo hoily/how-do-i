@@ -12,38 +12,31 @@ class App extends Component {
     this.input.focus()
   }
 
-    handleKeyPress = e => {
-    const { showAnswer } = this.state;    
-    if (e.key === 'Enter') {
-      if (!showAnswer && this.input.value.length === 0) return
-      this.toggleShowAnswer()
-    }
-  }
-
-  toggleShowAnswer = () => {
+  toggleShowAnswer (evt) {
+    evt.preventDefault();
     const { showAnswer } = this.state;
-    this.setState({showAnswer: !showAnswer})
+    if (!showAnswer && !this.input.value) return;
+    this.setState({showAnswer: !showAnswer});
     if (showAnswer) this.back.focus()
   }
 
   render() {
     const {showAnswer} = this.state;
     return (
-      <div className="App">
-        {!showAnswer &&
-          <div>
-            How do I&nbsp;
-            <input ref={(input) => {this.input = input;}} type="text" onKeyDown={this.handleKeyPress}></input>
-            ?
-          </div>
-        }
-        {showAnswer && 
+      <form className="App" onSubmit={this.toggleShowAnswer.bind(this)}>
+        {showAnswer ? (
           <div>
             <p>Don't</p>
-            <input type="button" onClick={this.toggleShowAnswer} ref={(back) => {this.back = back;}} value="Back"/>
+            <input type="submit" ref={(back) => {this.back = back;}} value="Back"/>
           </div>
-        }
-      </div>
+          ) : (
+            <div>
+              How do I&nbsp;
+                <input ref={(input) => {this.input = input;}} type="text"></input>
+                ?
+            </div>
+        )}
+      </form>
     );
   }
 }
