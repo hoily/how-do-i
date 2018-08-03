@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GithubCorner from 'react-github-corner';
 import './App.css';
+import getResult from './results'
 
 class App extends Component {
   constructor(props){
@@ -40,7 +41,7 @@ class App extends Component {
         }
         {showAnswer &&
           <div>
-            <p>Don't</p>
+            {getResult()}
             <input type="button" onClick={this.toggleShowAnswer} ref={(back) => {this.back = back;}} value="Back"/>
           </div>
         }
