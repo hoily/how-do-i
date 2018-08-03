@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GithubCorner from 'react-github-corner';
 import './App.css';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
   }
 
     handleKeyPress = e => {
-    const { showAnswer } = this.state;    
+    const { showAnswer } = this.state;
     if (e.key === 'Enter') {
       if (!showAnswer && this.input.value.length === 0) return
       this.toggleShowAnswer()
@@ -37,12 +38,13 @@ class App extends Component {
             ?
           </div>
         }
-        {showAnswer && 
+        {showAnswer &&
           <div>
             <p>Don't</p>
             <input type="button" onClick={this.toggleShowAnswer} ref={(back) => {this.back = back;}} value="Back"/>
           </div>
         }
+        <GithubCorner href="https://github.com/hoily/how-do-i" bannerColor="#ffffff" octoColor="#222" />
       </div>
     );
   }
